@@ -19,8 +19,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Trivara Enterprises",
-  description: "Build Cutting-Edge Technologies for your business",
+  title: "Trivara - Coming Soon | Scalable Software Solutions",
+  description:
+    "Trivara is building scalable software solutions that transform how businesses operate. Sign up to be notified when we launch.",
 };
 
 export default function RootLayout({
