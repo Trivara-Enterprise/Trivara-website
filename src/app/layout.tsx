@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Outfit } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -36,7 +35,6 @@ export default function RootLayout({
         className={`${outfit.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <GoogleAnalytics gaId={process.env.NEXT_GA_MID ?? ""} />
       </body>
     </html>
   );
