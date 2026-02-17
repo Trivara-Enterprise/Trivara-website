@@ -7,8 +7,9 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const Build = () => {
-  const container = useRef();
-  const textRef = useRef();
+  const container = useRef<HTMLDivElement | null>(null);
+const textRef = useRef<HTMLHeadingElement | null>(null);
+
 
   useGSAP(() => {
     gsap.from(textRef.current, {

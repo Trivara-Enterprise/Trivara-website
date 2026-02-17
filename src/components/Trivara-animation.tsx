@@ -4,20 +4,26 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Pic_layout from "./Pic-layout";
 
-
 const Trivara_animation = () => {
-  const container = useRef();
-  const logoRef = useRef();
-  const enterpriseRef = useRef();
-  const leftSideRef = useRef();
-  const rightSideRef = useRef();
-
-  // New refs for Hero Section
-  const heroLeftRef = useRef();
-  const heroRightRef = useRef();
+  const container = useRef<HTMLDivElement | null>(null);
+  const logoRef = useRef<HTMLHeadingElement | null>(null);
+  const enterpriseRef = useRef<HTMLHeadingElement | null>(null);
+  const leftSideRef = useRef<HTMLDivElement | null>(null);
+  const rightSideRef = useRef<HTMLDivElement | null>(null);
+  const heroLeftRef = useRef<HTMLDivElement | null>(null);
+  const heroRightRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(
     () => {
+      if (
+        !logoRef.current ||
+        !enterpriseRef.current ||
+        !leftSideRef.current ||
+        !rightSideRef.current ||
+        !heroLeftRef.current ||
+        !heroRightRef.current
+      )
+        return;
       const tl = gsap.timeline({ delay: 1 });
 
       gsap.set(logoRef.current, {
@@ -33,7 +39,7 @@ const Trivara_animation = () => {
       gsap.set(enterpriseRef.current, {
         opacity: 0,
         position: "fixed",
-        
+
         left: "50%",
         xPercent: -50,
         y: 6,
@@ -51,24 +57,23 @@ const Trivara_animation = () => {
         ease: "power2.out",
       })
         .to(
-  logoRef.current,
-  {
-    y: "-45vh",   
-    scale: 1,
-    duration: 1.5,
-    ease: "expo.inOut",
-  },
-  "+=0.5"
-)
-
+          logoRef.current,
+          {
+            y: "-45vh",
+            scale: 1,
+            duration: 1.5,
+            ease: "expo.inOut",
+          },
+          "+=0.5"
+        )
 
         .to(
           [
-            enterpriseRef.current,
-            leftSideRef.current,
-            rightSideRef.current,
-            heroLeftRef.current,
-            heroRightRef.current,
+            enterpriseRef.current!,
+            leftSideRef.current!,
+            rightSideRef.current!,
+            heroLeftRef.current!,
+            heroRightRef.current!,
           ],
           {
             opacity: 1,
@@ -140,7 +145,7 @@ const Trivara_animation = () => {
           </p>
         </div>
       </div>
-      <Pic_layout/>
+      <Pic_layout />
     </div>
   );
 };

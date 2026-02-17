@@ -8,11 +8,12 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
-  const container = useRef();
-  const logoRef = useRef();
-  const columnsRef = useRef();
-  const dividerRef = useRef();
-  const bottomRef = useRef();
+  const container = useRef<HTMLElement | null>(null);
+const logoRef = useRef<HTMLDivElement | null>(null);
+const columnsRef = useRef<HTMLDivElement | null>(null);
+const dividerRef = useRef<HTMLDivElement | null>(null);
+const bottomRef = useRef<HTMLDivElement | null>(null);
+
 
   useGSAP(() => {
     const tl = gsap.timeline({
