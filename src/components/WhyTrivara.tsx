@@ -117,7 +117,7 @@ export default function WhyTrivara() {
           BUILT DIFFERENT.
         </h1>
         <p className="text-gray-200 text-sm md:text-sm max-w-2xl mx-auto">
-          We don't just build software—we build the foundation for your success.
+          We don&apos;t just build software—we build the foundation for your success.
         </p>
       </div>
 
