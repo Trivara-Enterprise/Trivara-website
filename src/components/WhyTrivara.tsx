@@ -90,7 +90,8 @@ export default function WhyTrivara() {
         duration: 1,
         ease: "power3.out",
       }).from(
-        gridRef.current.children,
+        Array.from(gridRef.current!.children),
+
         {
           opacity: 0,
           y: 50,

@@ -31,7 +31,8 @@ const bottomRef = useRef<HTMLDivElement | null>(null);
       ease: "power3.out",
     })
       .from(
-        columnsRef.current.children,
+        Array.from(columnsRef.current!.children),
+
         {
           y: 60,
           opacity: 0,
