@@ -28,8 +28,9 @@ const data = [
 ];
 
 const Pic_layout = () => {
-  const containerRef = useRef(null);
-  const cardsRef = useRef<HTMLDivElement[]>([]);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
 
   useEffect(() => {
     const tl = gsap.timeline({ delay: 5 });
