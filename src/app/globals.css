@@ -1,7 +1,12 @@
 @import "tailwindcss";
 
+@theme {
+  /* This ensures Tailwind knows what 'outfit' is */
+  --font-outfit: "Outfit", sans-serif;
+}
+
 body {
-    font-family: var(--font-outfit), sans-serif;
+    font-family: outfit;
     background-color: black;
     color: white;
 }
