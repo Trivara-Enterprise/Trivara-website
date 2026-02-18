@@ -13,6 +13,7 @@ const Trivara_animation = () => {
   const heroLeftRef = useRef<HTMLDivElement | null>(null);
   const heroRightRef = useRef<HTMLDivElement | null>(null);
 
+   
   useGSAP(
     () => {
       if (
@@ -30,10 +31,12 @@ const Trivara_animation = () => {
         top: "50%",
         left: "50%",
         xPercent: -50,
-        yPercent: -50,
+        yPercent:-50,
         scale: 4,
         position: "fixed",
         opacity: 0,
+     
+
       });
 
       gsap.set(enterpriseRef.current, {
@@ -59,7 +62,8 @@ const Trivara_animation = () => {
         .to(
           logoRef.current,
           {
-            y: "-45vh",
+            top: "20px",
+            yPercent: 0,
             scale: 1,
             duration: 1.5,
             ease: "expo.inOut",
@@ -104,11 +108,12 @@ const Trivara_animation = () => {
           </ul>
         </div>
 
-        <div className="flex-1 flex flex-col items-center">
+        <div  className=" flex-1 flex flex-col items-center">
           <div className="text-center" />
           <h1
-            ref={logoRef}
-            className="font-[leaner] text-2xl font-bold z-50 whitespace-nowrap"
+          ref={logoRef}
+            
+            className="font-[leaner] text-2xl font-bold whitespace-nowrap"
           >
             TRIVARA
           </h1>
