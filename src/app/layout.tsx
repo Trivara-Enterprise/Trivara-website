@@ -2,6 +2,28 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Outfit } from "next/font/google";
+import localFont from "next/font/local";
+
+const leaner = localFont({
+  src: [
+    
+    {
+      path: "../font/LeanerBold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-leaner",
+});
+
+const Pertili = localFont({
+  src:[
+    {
+      path : "../font/pertili.ttf"
+    }
+  ],
+  variable : "--font-pertili"
+});
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -32,7 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${outfit.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={` ${geistSans.variable} ${geistMono.variable} ${leaner.variable} ${outfit.variable} ${Pertili.variable} antialiased`}
       >
         {children}
       </body>

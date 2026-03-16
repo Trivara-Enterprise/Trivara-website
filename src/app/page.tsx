@@ -1,10 +1,23 @@
-import { ComingSoon } from "@/components/ComingSoon";
-// import { HomePage } from "@/components/HomePage";
+import Build from "@/components/Build";
+import Footer from "@/components/Footer";
+import Pic_layout from "@/components/Pic-layout";
+import Trivara_animation from "@/components/Trivara-animation";
+import WhyTrivara from "@/components/WhyTrivara";
+import Work from "@/components/Work";
+
 
 const Page = () => {
-  // Switch between components by commenting/uncommenting:
-  // return <HomePage />;
-  return <ComingSoon />;
+  return(
+    <>
+    <Trivara_animation/>
+    <Work/>
+    <WhyTrivara/>
+    <Build/>
+    <Footer/>
+    </>
+    
+    
+  );
 };
 
 export default Page;
