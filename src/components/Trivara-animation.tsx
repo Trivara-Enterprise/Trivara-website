@@ -13,7 +13,6 @@ const Trivara_animation = () => {
   const heroLeftRef = useRef<HTMLDivElement | null>(null);
   const heroRightRef = useRef<HTMLDivElement | null>(null);
 
-   
   useGSAP(
     () => {
       if (
@@ -22,10 +21,21 @@ const Trivara_animation = () => {
         !leftSideRef.current ||
         !rightSideRef.current ||
         !heroLeftRef.current ||
-        !heroRightRef.current
+        !heroRightRef.current ||
+        !container.current
       )
         return;
-      const tl = gsap.timeline({ delay: 1 });
+
+      // Lock scroll during animation
+      gsap.set(document.body, { overflow: "hidden" });
+
+      const tl = gsap.timeline({
+        delay: 1,
+        onComplete: () => {
+          gsap.set(document.body, { overflow: "auto" });
+          gsap.set(container.current, { overflow: "visible" });
+        },
+      });
 
       gsap.set(logoRef.current, {
         top: "50%",
@@ -96,11 +106,15 @@ const Trivara_animation = () => {
   return (
     <div
       ref={container}
-      className="relative w-full bg-black text-white p-8 overflow-x-hidden"
+      className="relative w-full bg-black text-white p-8 overflow-hidden min-h-screen"
     >
       {/* Navigation */}
       <nav className="flex justify-between items-start w-full max-w-[1400px] mx-auto pt-2">
-        <div ref={leftSideRef} className="flex-1">
+        <div 
+          ref={leftSideRef} 
+          className="flex-1"
+          style={{ opacity: 0, transform: "translateX(-30px)" }}
+        >
           <ul className="flex gap-8 text-[12px] tracking-[0.2px] uppercase">
             <li className="cursor-pointer">Products</li>
             <li className="cursor-pointer">What We Do</li>
@@ -111,21 +125,39 @@ const Trivara_animation = () => {
         <div  className=" flex-1 flex flex-col items-center">
           <div className="text-center" />
           <h1
-          ref={logoRef}
-            
+            ref={logoRef}
             className="font-[leaner] text-2xl font-bold whitespace-nowrap"
+            style={{ 
+              opacity: 0, 
+              position: "fixed", 
+              top: "50%", 
+              left: "50%", 
+              transform: "translate(-50%, -50%) scale(4)",
+              zIndex: 50
+            }}
           >
             TRIVARA
           </h1>
           <h3
             ref={enterpriseRef}
             className="font-[leaner] text-[9px] tracking-[0.2em] mt-3 uppercase text-center justify-center"
+            style={{ 
+              opacity: 0, 
+              position: "fixed", 
+              left: "50%", 
+              transform: "translateX(-50%) translateY(6px)",
+              zIndex: 49
+            }}
           >
             ENTERPRISE
           </h3>
         </div>
 
-        <div ref={rightSideRef} className="flex-1 flex justify-end">
+        <div 
+          ref={rightSideRef} 
+          className="flex-1 flex justify-end"
+          style={{ opacity: 0, transform: "translateX(30px)" }}
+        >
           <button className="border border-white/30 px-6 py-2 rounded-full text-[12px] tracking-[0.2px] uppercase hover:bg-white hover:text-black transition-colors">
             Start your project
           </button>
@@ -133,7 +165,11 @@ const Trivara_animation = () => {
       </nav>
 
       <div className="mt-30 flex justify-between items-end max-w-[1400px] mx-auto">
-        <div ref={heroLeftRef} className="flex flex-col gap-2">
+        <div 
+          ref={heroLeftRef} 
+          className="flex flex-col gap-2"
+          style={{ opacity: 0, transform: "translateX(-200px)" }}
+        >
           <h3 className="text-xl font-light opacity-80 font-[Pertili]">
             WHERE BUSINESS RUN ON
           </h3>
@@ -142,7 +178,11 @@ const Trivara_animation = () => {
           </h1>
         </div>
 
-        <div ref={heroRightRef} className="max-w-md text-right">
+        <div 
+          ref={heroRightRef} 
+          className="max-w-md text-right"
+          style={{ opacity: 0, transform: "translateX(200px)" }}
+        >
           <p className="text-[15px] opacity-70 leading-relaxed">
             Custom enterprise SaaS solutions built with precision.
             <br />
